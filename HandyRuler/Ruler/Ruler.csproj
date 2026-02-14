@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <LangVersion>12</LangVersion>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\ruler.ico</ApplicationIcon>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);WFAC010;CA1416</NoWarn>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="Images\ruler128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\ruler.ico" />
+    <Resource Include="Images\ruler128.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Config.Net" Version="5.2.1" />
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.248">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

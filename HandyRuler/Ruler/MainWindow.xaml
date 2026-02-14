@@ -1,0 +1,167 @@
+﻿<Window x:Class="Ruler.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ruler"
+        mc:Ignorable="d"
+        x:Name="mainWindow"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="Ruler"
+        Icon="/ruler;component/images/ruler.ico"
+        Topmost="{Binding TopMost}"
+        WindowStyle="None"
+        WindowStartupLocation="Manual"
+        Left="{Binding Left, Mode=TwoWay}"
+        Top="{Binding Top, Mode=TwoWay}"
+        Width="{Binding Width, Mode=TwoWay}"
+        Height="{Binding Height, Mode=TwoWay}"
+        MinWidth="20"
+        MinHeight="20"
+        d:DesignWidth="800"
+        d:DesignHeight="80"
+        SnapsToDevicePixels="True">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="{Binding ResizeBorder}"
+                      CaptionHeight="0" CornerRadius="0" GlassFrameThickness="0"
+                      UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <local:EnumBooleanConverter x:Key="enumToBool"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Angle" IsCheckable="True" 
+                          IsChecked="{Binding AngleVisible, Mode=TwoWay}"
+                          InputGestureText="A"/>
+                <MenuItem Header="Magnifier" IsCheckable="True" 
+                          IsChecked="{Binding MagnifierVisible, Mode=TwoWay}"
+                          InputGestureText="Q"/>
+                <Separator/>
+                <MenuItem Header="Units">
+                    <MenuItem Header="Pixel" IsCheckable="True"
+                              IsChecked="{Binding ScaleUnits, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=Pixel}"
+                              InputGestureText="1"/>
+                    <MenuItem Header="DIP" IsCheckable="True"
+                              IsChecked="{Binding ScaleUnits, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=DIP}"
+                              InputGestureText="2"/>
+                    <MenuItem Header="Point" IsCheckable="True"
+                              IsChecked="{Binding ScaleUnits, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=Point}"
+                              InputGestureText="3"/>
+                    <MenuItem Header="Centimeter" IsCheckable="True"
+                              IsChecked="{Binding ScaleUnits, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=CM}"
+                              InputGestureText="4"/>
+                    <MenuItem Header="Inch" IsCheckable="True"
+                              IsChecked="{Binding ScaleUnits, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=Inch}"
+                              InputGestureText="5"/>
+                    <MenuItem Header="Percent" IsCheckable="True"
+                              IsChecked="{Binding ScaleUnits, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=Percent}"
+                              InputGestureText="6"/>
+                </MenuItem>
+                <MenuItem Header="Orientation">
+                    <MenuItem Header="Horizontal" IsCheckable="True"
+                              IsChecked="{Binding Orientation,Mode=TwoWay, 
+                                Converter={StaticResource enumToBool}, ConverterParameter=Horizontal}"
+                              InputGestureText="H"/>
+                    <MenuItem Header="Vertical" IsCheckable="True"
+                              IsChecked="{Binding Orientation, Mode=TwoWay, 
+                                Converter={StaticResource enumToBool}, ConverterParameter=Vertical}"
+                              InputGestureText="V"/>
+                </MenuItem>
+                <MenuItem Header="Zero Point">
+                    <MenuItem Header="Near" IsCheckable="True"
+                              IsChecked="{Binding ZeroPoint, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=Near}"
+                              InputGestureText="["/>
+                    <MenuItem Header="Far" IsCheckable="True"
+                              IsChecked="{Binding ZeroPoint, Mode=TwoWay,
+                                Converter={StaticResource enumToBool}, ConverterParameter=Far}"
+                              InputGestureText="]"/>
+                </MenuItem>
+                <MenuItem Header="Flip Scale" IsCheckable="True"
+                          IsChecked="{Binding Flip, Mode=TwoWay}"
+                          InputGestureText="S"/>
+                <MenuItem Header="Narrow Scale" IsCheckable="True"
+                          IsChecked="{Binding ThinScale, Mode=TwoWay}"
+                          InputGestureText="N"/>
+                <Separator/>
+                <MenuItem Header="Set Marker" Command="{Binding SetMarkerCommand}"
+                          InputGestureText="M"/>
+                <MenuItem Header="Remove Marker" Command="{Binding RemoveMarkerCommand}"
+                          InputGestureText="D"/>
+                <MenuItem Header="Clear Markers" Command="{Binding ClearMarkersCommand}"
+                          InputGestureText="C"/>
+                <Separator/>
+                <MenuItem Header="Window">
+                    <MenuItem Header="Always On Top" IsCheckable="True"
+                                IsChecked="{Binding TopMost, Mode=TwoWay}"
+                                InputGestureText="P"/>
+                    <MenuItem Header="Minimize"
+                                Click="Minimize_Click"
+                                InputGestureText="–"/>
+                    <MenuItem Header="Maximize"
+                              Command="{Binding MaximizeRulerCommand}" 
+                              InputGestureText="+"/>
+                    <MenuItem Header="Restore"
+                              Command="{Binding RestoreRulerCommand}" 
+                              InputGestureText="Backspace"/>
+                    <MenuItem Header="Dock Left"
+                              Command="{Binding DockRulerCommand}" 
+                              CommandParameter="Left"
+                              InputGestureText="L"/>
+                    <MenuItem Header="Dock Top"
+                              Command="{Binding DockRulerCommand}" 
+                              CommandParameter="Top"
+                              InputGestureText="T"/>
+                    <MenuItem Header="Dock Right"
+                              Command="{Binding DockRulerCommand}" 
+                              CommandParameter="Right"
+                              InputGestureText="R"/>
+                    <MenuItem Header="Dock Bottom"
+                              Command="{Binding DockRulerCommand}" 
+                              CommandParameter="Bottom"
+                              InputGestureText="B"/>
+                    </MenuItem>
+                <MenuItem Header="Options…" Click="ShowOptionsDialog_Click"
+                          InputGestureText="O"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="Exit_Click"
+                          InputGestureText="Esc"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+
+        <local:Scale x:Name="ruler"
+                     FontFamily="{Binding FontFamily}"
+                     FontSize="{Binding FontSize}"
+                     MarkerFontSize="{Binding MarkerFontSize}"
+                     ShortAxis="{Binding ShortAxis, Mode=OneWayToSource}"
+                     ColorTheme="{Binding ColorTheme}"
+                     Opacity="{Binding Opacity}"
+                     ShowBorders="{Binding ShowBorders}"
+                     ThinScale="{Binding ThinScale}"
+                     Orientation="{Binding Orientation}"
+                     ScaleUnits="{Binding ScaleUnits}"
+                     ZeroPoint="{Binding ZeroPoint}"
+                     Flip="{Binding Flip}"
+                     TrackPoint="{Binding TrackPoint}"
+                     Markers="{Binding Markers}"/>
+
+        <!--<TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Run Text="{Binding Width}" />
+            <Run Text="{Binding Height}" />
+        </TextBlock>-->
+
+    </Grid>
+
+</Window>

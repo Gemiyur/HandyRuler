@@ -1,0 +1,265 @@
+﻿<Window x:Class="Ruler.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ruler"
+        mc:Ignorable="d"
+        Title="Ruler Options" 
+        Icon="/ruler;component/images/ruler.ico"
+        FontSize="{Binding DialogFontSize}"
+        Width="480"
+        SizeToContent="Height"
+        WindowStyle="SingleBorderWindow">
+
+    <Window.Resources>
+        <local:EnumBooleanConverter x:Key="enumBool"/>
+        <local:InverseBooleanConverter x:Key="not" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="3,3,3,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0" Header="Orientation">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Content="Horizontal" Margin="3" GroupName="Style"
+                         IsChecked="{Binding Orientation, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Horizontal}"/>
+                    <RadioButton Content="Vertical" Margin="3" GroupName="Style"
+                         IsChecked="{Binding Orientation, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Vertical}"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="1" Margin="3,0" Header="Zero Point">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Content="Near" Margin="3" GroupName="Zero"
+                                 IsChecked="{Binding ZeroPoint, 
+                                    Converter={StaticResource enumBool}, ConverterParameter=Near}"/>
+                    <RadioButton Content="Far" Margin="3" GroupName="Zero"
+                                 IsChecked="{Binding ZeroPoint, 
+                                    Converter={StaticResource enumBool}, ConverterParameter=Far}"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="2" Margin="3,0" Header="Scale">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Content="Flip" Margin="3"
+                              IsChecked="{Binding Flip}"/>
+                    <CheckBox Content="Narrow" Margin="3"
+                              IsChecked="{Binding ThinScale}"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <GroupBox Grid.Row="1" Margin="3,0" Header="Window">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Content="Has Borders" Margin="3"
+                                  IsChecked="{Binding ShowBorders}"/>
+                    <CheckBox Content="Always on top" Margin="8,3,3,3"
+                                IsChecked="{Binding TopMost}"/>
+                </StackPanel>
+                <DockPanel LastChildFill="True">
+                    <Label Content="Opacity" Margin="3"/>
+                    <Slider VerticalAlignment="Center" 
+                        Value="{Binding Opacity}"
+                        Minimum="0.1"
+                        Maximum="1.0"
+                        TickFrequency=".1"
+                        LargeChange=".1"
+                        IsSnapToTickEnabled="True" 
+                        AutoToolTipPlacement="TopLeft"
+                        AutoToolTipPrecision="1" />
+
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+
+        <GroupBox Grid.Row="2" Margin="3,0" Header="Units">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Pixel" Margin="3" GroupName="Unit"
+                         IsChecked="{Binding ScaleUnits, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Pixel, Mode=TwoWay}"/>
+                <RadioButton Content="DIP" Margin="3" GroupName="Unit"
+                         IsChecked="{Binding ScaleUnits, 
+                            Converter={StaticResource enumBool}, ConverterParameter=DIP, Mode=TwoWay}"/>
+                <RadioButton Content="Point" Margin="3" GroupName="Unit"
+                         IsChecked="{Binding ScaleUnits, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Point, Mode=TwoWay}"/>
+                <RadioButton Content="Inch" Margin="3" GroupName="Unit"
+                         IsChecked="{Binding ScaleUnits, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Inch, Mode=TwoWay}"/>
+                <RadioButton Content="Centimeter" Margin="3" GroupName="Unit"
+                         IsChecked="{Binding ScaleUnits, 
+                            Converter={StaticResource enumBool}, ConverterParameter=CM, Mode=TwoWay}"/>
+                <RadioButton Content="Percent" Margin="3" GroupName="Unit"
+                         IsChecked="{Binding ScaleUnits, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Percent, Mode=TwoWay}"/>
+            </StackPanel>
+        </GroupBox>
+
+
+        <GroupBox Grid.Row="3" Margin="3,0" Header="Color Theme">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="Light" Margin="3" GroupName="Color"
+                         IsChecked="{Binding ColorTheme, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Light, Mode=TwoWay}"/>
+                <RadioButton Content="Dark" Margin="3" GroupName="Color"
+                         IsChecked="{Binding ColorTheme, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Dark, Mode=TwoWay}"/>
+                <RadioButton Content="Custom" Margin="3" GroupName="Color"
+                         IsChecked="{Binding ColorTheme, 
+                            Converter={StaticResource enumBool}, ConverterParameter=Custom, Mode=TwoWay}"/>
+            </StackPanel>
+        </GroupBox>
+        
+        
+        <GroupBox Grid.Row="4" Margin="3,0" Header="Fonts">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,3" 
+                           HorizontalAlignment="Right" Text="Font family" />
+                <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="6,3"
+                          HorizontalAlignment="Left" Width="200"
+                          ItemsSource="{Binding Path=FontFamilies}"
+                          SelectedValuePath="FamilyName"
+                          SelectedValue="{Binding Path=FontFamily}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FamilyName}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMonospaced}" Value="True">
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,3" 
+                           HorizontalAlignment="Right" Text="Ruler font size" />
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="6,3" Width="48">
+                    <TextBox.Text>
+                        <Binding Path="FontSize" Mode="TwoWay" 
+                                    UpdateSourceTrigger="PropertyChanged" Delay="1250">
+                            <Binding.ValidationRules>
+                                <local:ValueRangeRule Min="8" Max="24"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Grid.Row="1" Grid.Column="2" Margin="12,3" Text="432.5"
+                           FontFamily="{Binding Path=FontFamily}"
+                           FontSize="{Binding Path=FontSize}"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,3" 
+                           HorizontalAlignment="Right" Text="Marker font size" />
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="6,3" Width="48">
+                    <TextBox.Text>
+                        <Binding Path="MarkerFontSize" Mode="TwoWay" 
+                                    UpdateSourceTrigger="PropertyChanged" Delay="1250">
+                            <Binding.ValidationRules>
+                                <local:ValueRangeRule Min="8" Max="24"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBlock Grid.Row="2" Grid.Column="2" Margin="12,3" Text="432.5"
+                           FontFamily="{Binding Path=FontFamily}"
+                           FontSize="{Binding Path=MarkerFontSize}"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,3" 
+                           HorizontalAlignment="Right" Text="Dialog font size" />
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="6,3" Width="48">
+                    <TextBox.Text>
+                        <Binding Path="DialogFontSize" Mode="TwoWay" 
+                                    UpdateSourceTrigger="PropertyChanged" Delay="1250">
+                            <Binding.ValidationRules>
+                                <local:ValueRangeRule Min="8" Max="24"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <!--<TextBlock Grid.Row="3" Grid.Column="2" Margin="12,3" Text="432.5"
+                           FontFamily="{Binding Path=FontFamily}"
+                           FontSize="{Binding Path=DialogFontSize}"/>-->
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="5" Margin="3,0" Header="Magnifier">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Grid.Row="1" Grid.Column="0" Content="Width" Margin="3,0" />
+                    <local:IntegerTextBox Width="70" VerticalAlignment="Center" Margin="3" 
+                                          Step="10" Minimum="100" Maximum="2000" 
+                                          Value="{Binding MagnifierWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Label Grid.Row="1" Grid.Column="3" Content="Height" Margin="3,0" />
+                    <local:IntegerTextBox Margin="3" Width="70" VerticalAlignment="Center"
+                                          Step="10" Minimum="100" Maximum="2000" 
+                                          Value="{Binding MagnifierHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+
+                <DockPanel LastChildFill="true">
+                    <Label Content="Magnification" Margin="3,0"/>
+                    <Slider Margin="3,0"
+                            VerticalAlignment="Center"
+                            Value="{Binding Magnification}"
+                            Minimum="1.0"
+                            Maximum="4.0"
+                            TickFrequency=".1"
+                            IsSnapToTickEnabled="True" 
+                            AutoToolTipPlacement="TopLeft"
+                            AutoToolTipPrecision="1" />
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="6" Margin="3,0" Header="Angle">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Show Perpendicular" Margin="3"
+                          IsChecked="{Binding Perpendicular}"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="7" Margin="3,0" Header="Arrow Keys">
+            <StackPanel>
+                <TextBlock Text="Move the ruler window using arrow keys."/>
+                <TextBlock Text="Move the mouse cursor using Ctrl + arrow keys."/>
+                <TextBlock Text="Resize the ruler window using Alt + arrow keys."/>
+                <TextBlock Text="Add the Shift key to move faster."/>
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</Window>

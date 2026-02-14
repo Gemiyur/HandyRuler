@@ -1,0 +1,24 @@
+﻿<Window x:Class="Ruler.MagnifierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ruler"
+        mc:Ignorable="d"
+        Title="" 
+        Icon="/ruler;component/images/ruler.ico"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="Manual"
+        Height="{Binding MagnifierHeight, Mode=TwoWay}" 
+        Width="{Binding MagnifierWidth, Mode=TwoWay}"
+        d:DesignHeight="100"
+        d:DesignWidth="100">
+    
+    <Border Background="White" BorderBrush="Black" BorderThickness="1">
+        <local:Magnifier x:Name="magControl"
+                         Magnification="{Binding Magnification}"/>
+    </Border>
+</Window>
