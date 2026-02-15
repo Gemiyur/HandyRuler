@@ -1,0 +1,21 @@
+{
+  "CustomColors": {
+    "Foreground": "#FF000000",
+    "Background": "#FFFFFFFF",
+    "Marker": "#FF228B22",
+    "Angle": "#FFFF6600",
+    "Info": "#FFFFFFE1"
+  },
+  "HorizontalRuler": {
+    "Left": "200",
+    "Top": "400",
+    "Width": "800",
+    "Height": "80"
+  },
+  "VerticalRuler": {
+    "Left": "200",
+    "Top": "200",
+    "Width": "80",
+    "Height": "600"
+  }
+}

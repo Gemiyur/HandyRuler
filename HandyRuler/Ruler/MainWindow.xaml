@@ -8,7 +8,7 @@
         x:Name="mainWindow"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="Ruler"
+        Title="Линейка"
         Icon="/ruler;component/images/ruler.ico"
         Topmost="{Binding TopMost}"
         WindowStyle="None"
@@ -36,15 +36,15 @@
     <Grid>
         <Grid.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Angle" IsCheckable="True" 
+                <MenuItem Header="Угол" IsCheckable="True" 
                           IsChecked="{Binding AngleVisible, Mode=TwoWay}"
                           InputGestureText="A"/>
-                <MenuItem Header="Magnifier" IsCheckable="True" 
+                <MenuItem Header="Лупа" IsCheckable="True" 
                           IsChecked="{Binding MagnifierVisible, Mode=TwoWay}"
                           InputGestureText="Q"/>
                 <Separator/>
-                <MenuItem Header="Units">
-                    <MenuItem Header="Pixel" IsCheckable="True"
+                <MenuItem Header="Единицы">
+                    <MenuItem Header="Пиксели" IsCheckable="True"
                               IsChecked="{Binding ScaleUnits, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=Pixel}"
                               InputGestureText="1"/>
@@ -52,91 +52,91 @@
                               IsChecked="{Binding ScaleUnits, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=DIP}"
                               InputGestureText="2"/>
-                    <MenuItem Header="Point" IsCheckable="True"
+                    <MenuItem Header="Пункты" IsCheckable="True"
                               IsChecked="{Binding ScaleUnits, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=Point}"
                               InputGestureText="3"/>
-                    <MenuItem Header="Centimeter" IsCheckable="True"
+                    <MenuItem Header="Сантиметры" IsCheckable="True"
                               IsChecked="{Binding ScaleUnits, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=CM}"
                               InputGestureText="4"/>
-                    <MenuItem Header="Inch" IsCheckable="True"
+                    <MenuItem Header="Дюймы" IsCheckable="True"
                               IsChecked="{Binding ScaleUnits, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=Inch}"
                               InputGestureText="5"/>
-                    <MenuItem Header="Percent" IsCheckable="True"
+                    <MenuItem Header="Проценты" IsCheckable="True"
                               IsChecked="{Binding ScaleUnits, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=Percent}"
                               InputGestureText="6"/>
                 </MenuItem>
-                <MenuItem Header="Orientation">
-                    <MenuItem Header="Horizontal" IsCheckable="True"
+                <MenuItem Header="Ориентация">
+                    <MenuItem Header="Горизонтальная" IsCheckable="True"
                               IsChecked="{Binding Orientation,Mode=TwoWay, 
                                 Converter={StaticResource enumToBool}, ConverterParameter=Horizontal}"
                               InputGestureText="H"/>
-                    <MenuItem Header="Vertical" IsCheckable="True"
+                    <MenuItem Header="Вертикальная" IsCheckable="True"
                               IsChecked="{Binding Orientation, Mode=TwoWay, 
                                 Converter={StaticResource enumToBool}, ConverterParameter=Vertical}"
                               InputGestureText="V"/>
                 </MenuItem>
-                <MenuItem Header="Zero Point">
-                    <MenuItem Header="Near" IsCheckable="True"
+                <MenuItem Header="Нулевая точка">
+                    <MenuItem Header="Слева (сверху)" IsCheckable="True"
                               IsChecked="{Binding ZeroPoint, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=Near}"
                               InputGestureText="["/>
-                    <MenuItem Header="Far" IsCheckable="True"
+                    <MenuItem Header="Справа (снизу)" IsCheckable="True"
                               IsChecked="{Binding ZeroPoint, Mode=TwoWay,
                                 Converter={StaticResource enumToBool}, ConverterParameter=Far}"
                               InputGestureText="]"/>
                 </MenuItem>
-                <MenuItem Header="Flip Scale" IsCheckable="True"
+                <MenuItem Header="Шкала снизу (слева)" IsCheckable="True"
                           IsChecked="{Binding Flip, Mode=TwoWay}"
                           InputGestureText="S"/>
-                <MenuItem Header="Narrow Scale" IsCheckable="True"
+                <MenuItem Header="Узкая шкала" IsCheckable="True"
                           IsChecked="{Binding ThinScale, Mode=TwoWay}"
                           InputGestureText="N"/>
                 <Separator/>
-                <MenuItem Header="Set Marker" Command="{Binding SetMarkerCommand}"
+                <MenuItem Header="Установить маркер" Command="{Binding SetMarkerCommand}"
                           InputGestureText="M"/>
-                <MenuItem Header="Remove Marker" Command="{Binding RemoveMarkerCommand}"
+                <MenuItem Header="Удалить маркер" Command="{Binding RemoveMarkerCommand}"
                           InputGestureText="D"/>
-                <MenuItem Header="Clear Markers" Command="{Binding ClearMarkersCommand}"
+                <MenuItem Header="Удалить все маркеры" Command="{Binding ClearMarkersCommand}"
                           InputGestureText="C"/>
                 <Separator/>
-                <MenuItem Header="Window">
-                    <MenuItem Header="Always On Top" IsCheckable="True"
+                <MenuItem Header="Окно">
+                    <MenuItem Header="Поверх всех окон" IsCheckable="True"
                                 IsChecked="{Binding TopMost, Mode=TwoWay}"
                                 InputGestureText="P"/>
-                    <MenuItem Header="Minimize"
+                    <MenuItem Header="Свернуть"
                                 Click="Minimize_Click"
                                 InputGestureText="–"/>
-                    <MenuItem Header="Maximize"
+                    <MenuItem Header="На всю ширину (высоту) экрана"
                               Command="{Binding MaximizeRulerCommand}" 
                               InputGestureText="+"/>
-                    <MenuItem Header="Restore"
+                    <MenuItem Header="Восстановить"
                               Command="{Binding RestoreRulerCommand}" 
                               InputGestureText="Backspace"/>
-                    <MenuItem Header="Dock Left"
+                    <MenuItem Header="Закрепить на левой стороне экрана"
                               Command="{Binding DockRulerCommand}" 
                               CommandParameter="Left"
                               InputGestureText="L"/>
-                    <MenuItem Header="Dock Top"
+                    <MenuItem Header="Закрепить на верхней стороне экрана"
                               Command="{Binding DockRulerCommand}" 
                               CommandParameter="Top"
                               InputGestureText="T"/>
-                    <MenuItem Header="Dock Right"
+                    <MenuItem Header="Закрепить на правой стороне экрана"
                               Command="{Binding DockRulerCommand}" 
                               CommandParameter="Right"
                               InputGestureText="R"/>
-                    <MenuItem Header="Dock Bottom"
+                    <MenuItem Header="Закрепить на нижней стороне экрана"
                               Command="{Binding DockRulerCommand}" 
                               CommandParameter="Bottom"
                               InputGestureText="B"/>
                     </MenuItem>
-                <MenuItem Header="Options…" Click="ShowOptionsDialog_Click"
+                <MenuItem Header="Настройки..." Click="ShowOptionsDialog_Click"
                           InputGestureText="O"/>
                 <Separator/>
-                <MenuItem Header="Exit" Click="Exit_Click"
+                <MenuItem Header="Выход" Click="Exit_Click"
                           InputGestureText="Esc"/>
             </ContextMenu>
         </Grid.ContextMenu>
