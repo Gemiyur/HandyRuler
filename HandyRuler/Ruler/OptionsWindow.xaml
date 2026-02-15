@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ruler"
         mc:Ignorable="d"
-        Title="Ruler Options" 
+        Title="Настройки линейки" 
         Icon="/ruler;component/images/ruler.ico"
         FontSize="{Binding DialogFontSize}"
-        Width="480"
+        Width="700"
         SizeToContent="Height"
         WindowStyle="SingleBorderWindow">
 
@@ -36,46 +36,46 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Grid.Column="0" Header="Orientation">
+            <GroupBox Grid.Column="0" Header="Ориентация">
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Content="Horizontal" Margin="3" GroupName="Style"
+                    <RadioButton Content="Горизонтальная" Margin="3" GroupName="Style"
                          IsChecked="{Binding Orientation, 
                             Converter={StaticResource enumBool}, ConverterParameter=Horizontal}"/>
-                    <RadioButton Content="Vertical" Margin="3" GroupName="Style"
+                    <RadioButton Content="Вертикальная" Margin="3" GroupName="Style"
                          IsChecked="{Binding Orientation, 
                             Converter={StaticResource enumBool}, ConverterParameter=Vertical}"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Grid.Column="1" Margin="3,0" Header="Zero Point">
+            <GroupBox Grid.Column="1" Margin="3,0" Header="Нулевая точка">
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Content="Near" Margin="3" GroupName="Zero"
+                    <RadioButton Content="Слева (сверху)" Margin="3" GroupName="Zero"
                                  IsChecked="{Binding ZeroPoint, 
                                     Converter={StaticResource enumBool}, ConverterParameter=Near}"/>
-                    <RadioButton Content="Far" Margin="3" GroupName="Zero"
+                    <RadioButton Content="Справа (снизу)" Margin="3" GroupName="Zero"
                                  IsChecked="{Binding ZeroPoint, 
                                     Converter={StaticResource enumBool}, ConverterParameter=Far}"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Grid.Column="2" Margin="3,0" Header="Scale">
+            <GroupBox Grid.Column="2" Margin="3,0" Header="Шкала">
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox Content="Flip" Margin="3"
+                    <CheckBox Content="Снизу (слева)" Margin="3"
                               IsChecked="{Binding Flip}"/>
-                    <CheckBox Content="Narrow" Margin="3"
+                    <CheckBox Content="Узкая" Margin="3"
                               IsChecked="{Binding ThinScale}"/>
                 </StackPanel>
             </GroupBox>
         </Grid>
 
-        <GroupBox Grid.Row="1" Margin="3,0" Header="Window">
+        <GroupBox Grid.Row="1" Margin="3,0" Header="Окно">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <CheckBox Content="Has Borders" Margin="3"
+                    <CheckBox Content="Рамка линейки" Margin="3"
                                   IsChecked="{Binding ShowBorders}"/>
-                    <CheckBox Content="Always on top" Margin="8,3,3,3"
+                    <CheckBox Content="Поверх всех окон" Margin="8,3,3,3"
                                 IsChecked="{Binding TopMost}"/>
                 </StackPanel>
                 <DockPanel LastChildFill="True">
-                    <Label Content="Opacity" Margin="3"/>
+                    <Label Content="Непрозрачность" Margin="3"/>
                     <Slider VerticalAlignment="Center" 
                         Value="{Binding Opacity}"
                         Minimum="0.1"
@@ -91,46 +91,46 @@
         </GroupBox>
 
 
-        <GroupBox Grid.Row="2" Margin="3,0" Header="Units">
+        <GroupBox Grid.Row="2" Margin="3,0" Header="Единицы">
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="Pixel" Margin="3" GroupName="Unit"
+                <RadioButton Content="Пиксели" Margin="3" GroupName="Unit"
                          IsChecked="{Binding ScaleUnits, 
                             Converter={StaticResource enumBool}, ConverterParameter=Pixel, Mode=TwoWay}"/>
                 <RadioButton Content="DIP" Margin="3" GroupName="Unit"
                          IsChecked="{Binding ScaleUnits, 
                             Converter={StaticResource enumBool}, ConverterParameter=DIP, Mode=TwoWay}"/>
-                <RadioButton Content="Point" Margin="3" GroupName="Unit"
+                <RadioButton Content="Пункты" Margin="3" GroupName="Unit"
                          IsChecked="{Binding ScaleUnits, 
                             Converter={StaticResource enumBool}, ConverterParameter=Point, Mode=TwoWay}"/>
-                <RadioButton Content="Inch" Margin="3" GroupName="Unit"
+                <RadioButton Content="Дюймы" Margin="3" GroupName="Unit"
                          IsChecked="{Binding ScaleUnits, 
                             Converter={StaticResource enumBool}, ConverterParameter=Inch, Mode=TwoWay}"/>
-                <RadioButton Content="Centimeter" Margin="3" GroupName="Unit"
+                <RadioButton Content="Сантиметры" Margin="3" GroupName="Unit"
                          IsChecked="{Binding ScaleUnits, 
                             Converter={StaticResource enumBool}, ConverterParameter=CM, Mode=TwoWay}"/>
-                <RadioButton Content="Percent" Margin="3" GroupName="Unit"
+                <RadioButton Content="Проценты" Margin="3" GroupName="Unit"
                          IsChecked="{Binding ScaleUnits, 
                             Converter={StaticResource enumBool}, ConverterParameter=Percent, Mode=TwoWay}"/>
             </StackPanel>
         </GroupBox>
 
 
-        <GroupBox Grid.Row="3" Margin="3,0" Header="Color Theme">
+        <GroupBox Grid.Row="3" Margin="3,0" Header="Цветовая тема">
             <StackPanel Orientation="Horizontal">
-                <RadioButton Content="Light" Margin="3" GroupName="Color"
+                <RadioButton Content="Светлая" Margin="3" GroupName="Color"
                          IsChecked="{Binding ColorTheme, 
                             Converter={StaticResource enumBool}, ConverterParameter=Light, Mode=TwoWay}"/>
-                <RadioButton Content="Dark" Margin="3" GroupName="Color"
+                <RadioButton Content="Тёмная" Margin="3" GroupName="Color"
                          IsChecked="{Binding ColorTheme, 
                             Converter={StaticResource enumBool}, ConverterParameter=Dark, Mode=TwoWay}"/>
-                <RadioButton Content="Custom" Margin="3" GroupName="Color"
+                <RadioButton Content="Пользовательская" Margin="3" GroupName="Color"
                          IsChecked="{Binding ColorTheme, 
                             Converter={StaticResource enumBool}, ConverterParameter=Custom, Mode=TwoWay}"/>
             </StackPanel>
         </GroupBox>
-        
-        
-        <GroupBox Grid.Row="4" Margin="3,0" Header="Fonts">
+
+
+        <GroupBox Grid.Row="4" Margin="3,0" Header="Шрифты">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -144,7 +144,7 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,3" 
-                           HorizontalAlignment="Right" Text="Font family" />
+                           HorizontalAlignment="Right" Text="Семейство шрифтов" />
                 <ComboBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="6,3"
                           HorizontalAlignment="Left" Width="200"
                           ItemsSource="{Binding Path=FontFamilies}"
@@ -168,7 +168,7 @@
                 </ComboBox>
 
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,3" 
-                           HorizontalAlignment="Right" Text="Ruler font size" />
+                           HorizontalAlignment="Right" Text="Размер шрифта линейки" />
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="6,3" Width="48">
                     <TextBox.Text>
                         <Binding Path="FontSize" Mode="TwoWay" 
@@ -184,7 +184,7 @@
                            FontSize="{Binding Path=FontSize}"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,3" 
-                           HorizontalAlignment="Right" Text="Marker font size" />
+                           HorizontalAlignment="Right" Text="Размер шрифта маркеров" />
                 <TextBox Grid.Row="2" Grid.Column="1" Margin="6,3" Width="48">
                     <TextBox.Text>
                         <Binding Path="MarkerFontSize" Mode="TwoWay" 
@@ -200,7 +200,7 @@
                            FontSize="{Binding Path=MarkerFontSize}"/>
 
                 <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,3" 
-                           HorizontalAlignment="Right" Text="Dialog font size" />
+                           HorizontalAlignment="Right" Text="Размер шрифта настроек" />
                 <TextBox Grid.Row="3" Grid.Column="1" Margin="6,3" Width="48">
                     <TextBox.Text>
                         <Binding Path="DialogFontSize" Mode="TwoWay" 
@@ -217,21 +217,21 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Grid.Row="5" Margin="3,0" Header="Magnifier">
+        <GroupBox Grid.Row="5" Margin="3,0" Header="Лупа">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Grid.Row="1" Grid.Column="0" Content="Width" Margin="3,0" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="Ширина" Margin="3,0" />
                     <local:IntegerTextBox Width="70" VerticalAlignment="Center" Margin="3" 
                                           Step="10" Minimum="100" Maximum="2000" 
                                           Value="{Binding MagnifierWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <Label Grid.Row="1" Grid.Column="3" Content="Height" Margin="3,0" />
+                    <Label Grid.Row="1" Grid.Column="3" Content="Высота" Margin="3,0" />
                     <local:IntegerTextBox Margin="3" Width="70" VerticalAlignment="Center"
                                           Step="10" Minimum="100" Maximum="2000" 
                                           Value="{Binding MagnifierHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
 
                 <DockPanel LastChildFill="true">
-                    <Label Content="Magnification" Margin="3,0"/>
+                    <Label Content="Увеличение" Margin="3,0"/>
                     <Slider Margin="3,0"
                             VerticalAlignment="Center"
                             Value="{Binding Magnification}"
@@ -245,19 +245,19 @@
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Row="6" Margin="3,0" Header="Angle">
+        <GroupBox Grid.Row="6" Margin="3,0" Header="Угол">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Show Perpendicular" Margin="3"
+                <CheckBox Content="Показывать перпендикуляр" Margin="3"
                           IsChecked="{Binding Perpendicular}"/>
             </StackPanel>
         </GroupBox>
 
-        <GroupBox Grid.Row="7" Margin="3,0" Header="Arrow Keys">
+        <GroupBox Grid.Row="7" Margin="3,0" Header="Клавиатура">
             <StackPanel>
-                <TextBlock Text="Move the ruler window using arrow keys."/>
-                <TextBlock Text="Move the mouse cursor using Ctrl + arrow keys."/>
-                <TextBlock Text="Resize the ruler window using Alt + arrow keys."/>
-                <TextBlock Text="Add the Shift key to move faster."/>
+                <TextBlock Text="Перемещение окна линейки: Клавиши со стрелками."/>
+                <TextBlock Text="Перемещение курсора мыши: Клавиша Ctrl + стрелки."/>
+                <TextBlock Text="Изменение длины линейки: Клавиша Alt + стрелки."/>
+                <TextBlock Text="Клавиша Shift к комбинации клавиш ускоряет действие."/>
             </StackPanel>
         </GroupBox>
 
