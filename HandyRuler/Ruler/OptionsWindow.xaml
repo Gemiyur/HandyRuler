@@ -9,8 +9,7 @@
         Icon="/ruler;component/images/ruler.ico"
         FontSize="{Binding DialogFontSize}"
         Width="525"
-        SizeToContent="Height"
-        WindowStyle="SingleBorderWindow">
+        SizeToContent="Height">
 
     <Window.Resources>
         <local:EnumBooleanConverter x:Key="enumBool" />
@@ -125,7 +124,6 @@
             </StackPanel>
         </GroupBox>
 
-
         <GroupBox Grid.Row="2" Header="Единицы" Style="{StaticResource GroupBoxStyle}">
             <StackPanel Orientation="Horizontal" Margin="3,5,0,5">
                 <RadioButton GroupName="Unit" Content="Пиксели"
@@ -149,7 +147,6 @@
             </StackPanel>
         </GroupBox>
 
-
         <GroupBox Grid.Row="3" Header="Цветовая тема" Style="{StaticResource GroupBoxStyle}">
             <StackPanel Orientation="Horizontal" Margin="3,5,0,5">
                 <RadioButton GroupName="Color" Content="Светлая"
@@ -163,7 +160,6 @@
                                 Converter={StaticResource enumBool}, ConverterParameter=Custom, Mode=TwoWay}" />
             </StackPanel>
         </GroupBox>
-
 
         <GroupBox Grid.Row="4" Header="Шрифты" Style="{StaticResource GroupBoxStyle}">
             <Grid Margin="3,0,0,0">
