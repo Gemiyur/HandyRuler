@@ -135,12 +135,12 @@
                 <RadioButton GroupName="Unit" Content="Пункты" Style="{StaticResource HorizontalToggleButtonStyle}"
                              IsChecked="{Binding ScaleUnits, 
                                 Converter={StaticResource enumBool}, ConverterParameter=Point, Mode=TwoWay}" />
-                <RadioButton GroupName="Unit" Content="Дюймы" Style="{StaticResource HorizontalToggleButtonStyle}"
-                             IsChecked="{Binding ScaleUnits, 
-                                Converter={StaticResource enumBool}, ConverterParameter=Inch, Mode=TwoWay}" />
                 <RadioButton GroupName="Unit" Content="Сантиметры" Style="{StaticResource HorizontalToggleButtonStyle}"
                              IsChecked="{Binding ScaleUnits, 
                                 Converter={StaticResource enumBool}, ConverterParameter=CM, Mode=TwoWay}" />
+                <RadioButton GroupName="Unit" Content="Дюймы" Style="{StaticResource HorizontalToggleButtonStyle}"
+                             IsChecked="{Binding ScaleUnits, 
+                                Converter={StaticResource enumBool}, ConverterParameter=Inch, Mode=TwoWay}" />
                 <RadioButton GroupName="Unit" Content="Проценты" Style="{StaticResource HorizontalToggleButtonStyle}"
                              IsChecked="{Binding ScaleUnits, 
                                 Converter={StaticResource enumBool}, ConverterParameter=Percent, Mode=TwoWay}" />
