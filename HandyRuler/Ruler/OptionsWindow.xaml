@@ -8,7 +8,7 @@
         Title="Настройки линейки" 
         Icon="/ruler;component/images/ruler.ico"
         FontSize="{Binding DialogFontSize}"
-        Width="550"
+        Width="525"
         SizeToContent="Height"
         WindowStyle="SingleBorderWindow">
 

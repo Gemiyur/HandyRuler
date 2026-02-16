@@ -38,7 +38,7 @@ namespace Ruler
         [DefaultValue(12d)]
         double MarkerFontSize { get; set; }
 
-        [DefaultValue(13d)]
+        [DefaultValue(12d)]
         double DialogFontSize { get; set; }
 
         [DefaultValue(1d)]
